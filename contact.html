@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #6879dc, #656c91);
+        }
+
+        .contact-container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            width: 350px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            outline: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 80px;
+            resize: none;
+        }
+
+        button {
+            background: #ff477e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ff265f;
+        }
+
+        #responseMessage {
+            margin-top: 15px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .home-button {
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff80;
+            color: #000;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .home-button:hover {
+            background-color: #fff;
+            color: #110bc5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="index.html" class="home-button">Home</a>
+
+    <div class="contact-container">
+        <h2>Contact Me</h2>
+        <form id="contact-form">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+        <p id="responseMessage"></p>
+    </div>
+
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevents page reload
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let message = document.getElementById("message").value;
+
+            if (name === "" || email === "" || message === "") {
+                document.getElementById("responseMessage").innerText = "⚠️ Please fill out all fields!";
+                return;
+            }
+
+            document.getElementById("responseMessage").innerText = `✅ Thank you, ${name}! Your message has been received.`;
+            document.getElementById("contact-form").reset(); // Clears the form
+        });
+    </script>
+
+</body>
+
+</html>
